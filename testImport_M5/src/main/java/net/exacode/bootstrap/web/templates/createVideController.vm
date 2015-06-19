@@ -1,0 +1,49 @@
+
+app
+    .controller('ViewController', [ function() {
+        var self = this;
+        self.Entities= [];
+		#set($lastDepth = 0)
+        #foreach( $obj in $fieldsName )
+			#set($indexO = ($foreach.count - 1))
+			#set($temp=$obj.split(">"))
+			#set($lastDepth = $temp.size())
+			#set($lastval = $temp.size() - 1)
+			#set($parent = $temp[0])
+			#set($champ = $champ.replaceAll(">","."))
+			#if($temp.size().equals(1))
+				self.Entities.${parent} = [];
+				self.Entities.${parent}[0] = {};
+			#else
+				self.Entities.${parent}[0]#foreach($range in [1..$lastval]).${temp[$range]}#end = "Attribute$indexO";
+			#end
+		#end	
+        self.new = function()                                          
+        {
+		var entity = new VoitureObj();
+			#foreach( $obj in $fieldsName )
+				#set($indexO = ($foreach.count - 1))
+				#set($temp=$obj.split(">"))
+				#set($parent = $temp[0])
+				#if($temp.size().equals(1))
+				self.Entities.${parent}[self.Entities.${parent}.length]=entity;
+				#end
+				
+				
+				
+			#end
+
+        };
+        self.delete = function(index)                                   
+        {
+        
+        self.objet.splice(index,1);
+        };
+        self.cancel= function()
+        {
+
+
+
+        }
+
+    }])

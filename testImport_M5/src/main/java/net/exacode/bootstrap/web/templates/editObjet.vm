@@ -1,0 +1,26 @@
+
+<div ng-controller="EditController as ctrl">
+		#foreach($champ in $fieldsName)
+			#if($champ.contains("->"))
+				#set($temp=$champ.split("->"))
+				#set($lastval = $temp.size() - 1)
+				#set($champCut = $temp[$lastval])
+				#set($champ = $champ.replaceAll("->","."))
+				#foreach($range in [1..$lastval])	#end	
+						
+				<div>
+				<span>$champCut</span> : <input type='text' ng-model="ctrl.Entities.$champ" value = "{{ctrl.Entities.$champ}}"/>
+				</div>		
+			#else
+			#set($champ = $champ.replaceAll("->","."))
+			<div >
+				<b>$champ</b>
+			</div>
+			<br>
+				
+			#end
+		#end
+<br>
+<input type="button" ng-click="ctrl.new()" value="save"/>
+<input type="button" ng-click="ctrl.delete()" value="cancel"/>
+</div>

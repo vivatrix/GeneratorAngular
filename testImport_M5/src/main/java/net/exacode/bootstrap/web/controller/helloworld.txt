@@ -1,0 +1,3 @@
+Hello java! Welcome to Velocity!
+$testArray[0]
+ Hello World

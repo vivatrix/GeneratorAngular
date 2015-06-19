@@ -1,0 +1,34 @@
+
+app
+    .controller('EditController', ['$routeParams', function($routeParams) {
+        var self = this;
+		self.param = $routeParams.entityId;
+		self.actual = 1;
+        self.Entities= [];
+        #foreach( $obj in $listFields )
+        #set($indexO = ($foreach.count - 1))
+			#if($fieldsName.get($indexO).contains(">"))
+        	#set($fieldName = $fieldsName.get($indexO).replaceAll(">","."))
+			self.Entities.$fieldName = "$listFields[$indexO]";
+			#else
+			#set($fieldName = $fieldsName.get($indexO))
+			self.Entities.$fieldName = {};
+			self.Entities.${fieldName}.Name = "$listFields[$indexO]";
+			#end
+		#end
+		
+
+        self.save = function()                                          
+        {
+
+		
+		
+		}
+        self.cancel= function()
+        {
+
+
+
+        }
+
+    }])

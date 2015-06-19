@@ -1,0 +1,14 @@
+
+<div>
+<h2>Sommaire</h2>
+<h3>aller a: <input type="text" /></h3> 
+<hr/>
+#foreach($item in $structure)
+	#if($item.get(0).equals("Entity") && $item.get(4) == 2)<br/>
+<div class="homeItem"><a href="#index/$item.get(1)/listView"><h4>$item.get(1)</h4></a> </div>
+
+
+	#end
+#end
+
+</div>

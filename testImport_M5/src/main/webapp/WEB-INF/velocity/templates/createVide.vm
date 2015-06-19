@@ -1,0 +1,14 @@
+#define($content)
+
+		<tr><td>
+		#foreach( $obj in $fields )
+		#set($index = ($foreach.count - 1))
+		<span>$fieldsName.get($index)</span> : <input type='text' value = "$obj"/><br>
+		#end
+		
+		<input type="button" value="save">
+		<input type="button" value="cancel">
+
+		
+
+ #end

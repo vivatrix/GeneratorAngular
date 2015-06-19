@@ -1,0 +1,13 @@
+			
+			#if($fieldsName.get($indexO).contains("->"))
+				#set($fieldName = $fieldsName.get($indexO).replaceAll("->","."))
+				self.Entities.${fieldName}[0] = "type is $listFields[$indexO]";
+			#else
+				#set($fieldName = $fieldsName.get($indexO))
+				#if($obj.equals("Entity"))
+					self.Entities.$fieldName = [];
+				#end
+				self.Entities.${fieldName}[0];
+				self.Entities.${fieldName}[0].Name = "$listFields[$indexO]";
+			#end
+		#end

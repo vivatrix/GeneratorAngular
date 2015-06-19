@@ -1,0 +1,5 @@
+#define($content)
+	<p>#springMessage("Hello"): $name</p>
+	$test[0]
+	<p>#springMessage("Greetings")</p>
+#end

@@ -1,0 +1,28 @@
+'use strict';
+#foreach($entity in $EntitiesConstruct)
+	var $entity.get(0) = function(#foreach($attribute in $entity)#if($foreach.count > 1)#if($foreach.count > 2),#end $attribute#end#end)
+	{
+	#foreach($attribute in $entity)
+	#if($foreach.count > 1)
+	this.$attribute = $attribute;
+	
+	#end
+	#end
+	}
+#end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var app = angular.module('Test',['ngResource','ngRoute']);

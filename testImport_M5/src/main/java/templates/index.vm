@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="${AppName}">
+<head>
+    <meta charset="UTF-8">
+    <!-- Vendors -->
+    <link rel="stylesheet" href="Css/style.css">
+    <script src="Js/angular.js" ></script>
+    <script src="Js/angular-resource.js" ></script>
+    <script src="Js/angular-route.js" ></script>
+     <script src="Js/checklist-model.js" ></script>
+     
+	<script src="Src/app.js" ></script>
+	<script type="text/javascript" src="Src/Route/routing.js"></script>
+	<script type="text/javascript" src="Src/Service/sharedData.js"></script>
+	#foreach($fact in $factoryList)
+	<script type="text/javascript" src="Src/Controller/${fact}Controller.js"></script>
+	<script type="text/javascript" src="Src/Factory/${fact}Factory.js"></script>
+	#end
+
+</head>
+<body>
+<header>
+<a href="#/index"><h1>Home</h1></a>
+<hr/>
+</header>
+<div class="ng-view"></div>
+</body>
+</html>

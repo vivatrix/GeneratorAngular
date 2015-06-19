@@ -1,0 +1,27 @@
+var DBB = [];
+
+#foreach($entity in $EntitiesConstruct)
+var $entity.get(0) = new ${entity.get(0)}(
+#foreach($attribute in $entity)
+	#if($foreach.count > 1)
+		#if($foreach.count > 2),
+		#end 
+		#set($present = false)
+		#foreach($entityCheck in $EntitiesConstruct)
+			#if($entityCheck[0].equals($attribute))
+			#set($present = true)
+			#end
+		#end
+		#if($present)
+		$attribute
+		#else
+			"NewValue"		
+		#end
+	#end
+#end);
+#if($foreach.count.equals($EntitiesConstruct.size()))
+DBB.push($entity.get(0));
+#end
+#end
+alert(JSON.stringify(DBB));
+console.log(DBB);

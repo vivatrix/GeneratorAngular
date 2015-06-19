@@ -1,0 +1,30 @@
+
+app
+    .controller('$controller', [ function() {
+        var self = this;
+        self.data= [];
+        #foreach( $obj in $listFields )
+        #set($indexO = ($foreach.count - 1))
+        	#set($fieldName = $fieldsName.get($indexO).replaceAll("->","."))
+			self.Entities.$fieldName = $listFields[$index];
+		#end
+		
+
+        self.new = function(objet)                                          
+        {
+			self.objet[self.objet.length] = objet;
+
+        };
+        self.delete = function(index)                                   
+        {
+        
+        self.objet.splice(index,1);
+        };
+        self.cancel= function()
+        {
+
+
+
+        }
+
+    }])

@@ -1,0 +1,30 @@
+
+<div ng-controller="ViewController as ctrl">
+
+#set($entityName = $fieldsName.split(">")[0])
+$entityName
+		#foreach($champ in $fieldsName)
+			#if($champ.contains(">"))
+				#set($temp=$champ.split(">"))
+				#set($lastval = $temp.size() - 1)
+				#set($champCut = $temp[$lastval])
+				#set($parent = $temp[0])
+				#set($champ = $champ.replaceAll(">","."))
+					
+						
+				<div>
+				<span>$champCut</span> : <input type='text' value = "{{ctrl.Entities.${parent}[0]#foreach($range in [1..$lastval]).${temp[$range]}#end}}"/>
+				</div>		
+			#else
+			#set($champ = $champ.replaceAll(">","."))
+			<div >
+				<b>$champ</b>
+			</div>
+			<br>
+				<input type="button" ng-click="ctrl.new(ctrl.Entities.${entityName}[0])"/>
+			#end
+		#end
+
+ 
+ 
+</div>

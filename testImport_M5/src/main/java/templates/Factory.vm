@@ -1,0 +1,8 @@
+app
+#set($v = "$")
+.factory('${EntityName}Factory',['${v}resource',function(${v}resource){
+        return ${v}resource('../rest/#foreach($a in $Parent)$a/:${a}Id/#end${EntityName}/:${EntityName}Id',
+            {#foreach($a in $Parent)#set($ParentId = $Parent.size() - $foreach.count)#set($indexA = $foreach.count)"#set($reverseIndex = $Parent.size())#foreach($b in $Parent)#set($indexB = $foreach.count)#set($parentIndex = $reverseIndex - 1)#if($indexA <= $reverseIndex)${b}.#{end}#set($reverseIndex = $reverseIndex - 1)#{end}Id":"@${Parent.get($ParentId)}Id",#if($indexA == $Parent.size())"#foreach($b in $Parent)${b}.#{end}${EntityName}.${EntityName}Id":"@${EntityName}Id"#end#{end}}
+        );
+		
+    }])

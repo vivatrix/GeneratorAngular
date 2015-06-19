@@ -1,0 +1,41 @@
+#define($content)
+ <!DOCTYPE html>
+
+<html ng-app="Test">
+<head>
+    <meta charset="UTF-8">
+    <!-- Vendors -->
+    <script src="angular.js" ></script>
+    <script src="angular-resource.js" ></script>
+    <script src="angular-route.js" ></script>
+    <script src="app.js" ></script>
+    <!-- Controllers -->
+    <script type="text/javascript" src="createVideController.js"></script>
+</head>
+<body ng-controller="controller as item">
+
+
+		<tr><td>
+		#foreach($champ in $fieldsName)
+			#if($champ.contains("->"))
+				#set($temp=$champ.split("->"))
+				#set($lastval = $temp.size() - 1)
+				#set($champCut = $temp[$lastval])
+				#set($champ = $champ.replaceAll("->","."))
+				#foreach($range in [1..$lastval])
+				=
+				#end	
+				><span ng-repeat="item in objet">$champCut</span> 
+					: <input type='text' value = "{{item.entities.$champ}}"/><br>		
+			
+			#else
+				<span ng-repeat="item in objet">$champCut</span> 
+				: <input type='text' value = "{{item.entities.$champ}}"/><br>
+			#end
+		#end
+
+ 
+ 
+</body>
+</html>
+ #end
