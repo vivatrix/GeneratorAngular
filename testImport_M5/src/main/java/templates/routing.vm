@@ -86,7 +86,7 @@ app
                 controller:'${item.get(1)}Controller as ${item.get(1)}',
                 resolve: {
                     loaded: ['${V}http','sharedData','${V}route', function(${V}http, sharedData, ${V}route){
-                        return ${V}http.get("./rest/${item.get(1)}").then(function(response){
+                        ${V}http.get("./rest/#foreach($url in $parent)${url}/"+$route.current.params.${url}Id+"/#end${item.get(1)}").then(function(response){
                             sharedData.store('${item.get(1)}',response.data);
                                                        #foreach($item in $external)
                                 return ${V}http.get("./rest/$item").then(function(response){
@@ -97,8 +97,6 @@ app
                             #foreach($item in $external)
                             });
                             #end
-                            
-
                         })
                     } ]
                 }

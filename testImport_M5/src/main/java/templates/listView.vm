@@ -77,7 +77,7 @@ details: <input type="button" id="displayButton" value="Afficher" ng-click="${En
 </div>
 #end
 <div class="resetFloat">
-<input type="button" value="new" ng-click="${EntityName}.Redirect('createView')"/>
+<input type="button" value="new" ng-click="${EntityName}.create('createView')"/>
 <input type="button" value="new Vide" ng-click="${EntityName}.new()"/>
 </div>
 </div>
