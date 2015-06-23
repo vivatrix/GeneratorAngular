@@ -41,7 +41,7 @@ console.log('connected.');
 #set($first = "nope")
 #foreach($item in $structure)
 #set($Depth = $depthInt.parseInt($item.get(4)))
-#if($Depth > 1)
+#if($Depth > 1).
 #if($item.get(0).equals("Entity"))
 #if($Depth == 2)
 #if($foreach.count > 2)
@@ -160,7 +160,7 @@ app.get('/rest/#foreach($url in $parent)#set($zzz=${item.get(1)}) ${url}/:${url}
 		  ,{${item.get(1)}:{$elemMatch:{"id": req.params.${item.get(1)}Id}}}
 		  #end
     ).sort("id").exec(function(err, doc){
-            if(!err) {#if(!$actualParent.equals(${item.get(1)}))res.json(doc[0].${item.get(1)});#elseres.json(doc[0]);#end
+            if(!err) {#if(!$actualParent.equals(${item.get(1)}))res.json(doc[0].${item.get(1)});#else res.json(doc[0]);#end
                 console.log("GET2:");
 		
 		console.log(doc#foreach($url in $parent)#if(!$url.equals($actualParent))[0].${url}#end#end#if(!$item.get(1).equals($actualParent))[0].${item.get(1)}#end[0]);
