@@ -78,6 +78,12 @@
         self.Redirect = function(aim){
         ${d}location.path("/index/${EntityName}/"+aim);
         }
+        
+        self.create = function(aim){
+         var res = ${d}location.path().substr(0,${d}location.path().length-8);
+         ${d}location.path(res+aim);
+        
+        }
         self.edit = function(aim){
         
          var res = ${d}location.path().substr(0,${d}location.path().length-8);
